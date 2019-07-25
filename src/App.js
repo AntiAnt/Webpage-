@@ -14,14 +14,20 @@ class App extends Component {
     this.setState(prev => ({
       menuDrop: !prev.menuDrop
     }))
+  }
+  menuList() {
     if (this.state.menuDrop === true) {
-      console.log(true)
-      let title = document.getElementById('MenuButton');
-      title.title = 'true';
-    }else{
-      console.log(false)
-      let title = document.getElementById('MenuButton');
-      title.title = 'false';
+      return(
+        <div>
+          <ul id='Menu'>
+            <li>Home</li>
+            <li>Story</li>
+            <li>Projects</li>
+            <li>Github</li>
+            <li>Work History</li>
+          </ul>
+        </div>
+      )
     }
   }
   render() {
@@ -30,8 +36,9 @@ class App extends Component {
         <div className='App'>
           <h1>Michael I Welsh</h1>
           <button id='MenuButton' title='Menu' onClick={()=>{this.menuClick()}}>
-          {this.props.title}
+          menu
           </button>
+          {this.menuList()}
         </div>
       </React.Fragment>
     )
