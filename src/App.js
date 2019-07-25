@@ -1,26 +1,41 @@
-import React from 'react';
+import React,{Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      menuDrop: false,
+    }
+  }
+  menuClick() {
+    this.setState(prev => ({
+      menuDrop: !prev.menuDrop
+    }))
+    if (this.state.menuDrop === true) {
+      console.log(true)
+      let title = document.getElementById('MenuButton');
+      title.title = 'true';
+    }else{
+      console.log(false)
+      let title = document.getElementById('MenuButton');
+      title.title = 'false';
+    }
+  }
+  render() {
+    return (
+      <React.Fragment>
+        <div className='App'>
+          <h1>Michael I Welsh</h1>
+          <button id='MenuButton' title='Menu' onClick={()=>{this.menuClick()}}>
+          {this.props.title}
+          </button>
+        </div>
+      </React.Fragment>
+    )
+  }
 }
 
 export default App;
